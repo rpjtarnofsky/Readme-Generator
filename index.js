@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const { title } = require('process');
 // array of questions for user input
 const questions = [
     {
@@ -138,7 +139,7 @@ function init() {
     inquirer.prompt(questions)
     .then(function (userInput) {
         console.log(userInput)
-        writeToFile("README.md", generateMarkdown(userInput));
+        writeToFile((title) + "README.md", generateMarkdown(userInput));
     });
 };
 
